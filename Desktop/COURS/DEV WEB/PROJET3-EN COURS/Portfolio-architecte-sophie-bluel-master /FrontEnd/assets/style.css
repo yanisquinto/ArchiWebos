@@ -134,8 +134,6 @@ li:hover {
 	grid-row-gap: 20px;
 }
 
-/* ... Autres styles ... */
-
 .filters {
     display: flex;
     align-items: center;
@@ -171,8 +169,8 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
+
 #contact {
 	width: 50%;
 margin: auto;
