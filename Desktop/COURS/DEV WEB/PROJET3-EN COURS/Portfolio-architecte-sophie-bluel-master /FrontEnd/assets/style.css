@@ -220,3 +220,67 @@ footer nav ul {
 	margin: 2em
 }
 
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    margin-top: 20px;
+}
+
+#login-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#login-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+	margin-top: 40px;
+}
+
+#login-form input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(29, 97, 84, 0.1), 0px -2px 4px rgba(29, 97, 84, 0.05);
+    height: 40px;
+    max-width: 400px;
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: center; /* Centrer le texte */
+	margin-right: 329px;
+    width: 100%;
+}
+
+.email-label {
+    margin-right: 47px;
+}
+
+/* Ajouter le style pour le mot "Mentions Légales" en bas à droite */
+footer nav ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/* Mettre le footer en background blanc */
+footer {
+    background-color: white;
+}
+
+/* Ajouter le style pour les liens du footer */
+footer nav li {
+    margin-left: 20px;
+}

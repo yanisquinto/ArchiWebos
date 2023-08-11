@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gallerySection = document.getElementById('gallery'); // Section où les images seront affichées
     const filtersContainer = document.getElementById('filters'); // Conteneur des filtres
 
-    // Définition des catégories de filtres avec leurs IDs et noms
+    // Définition des catégories de filtres avec leurs ID et noms
     const categories = [
         { id: -1, name: 'Tous' },
         { id: 1, name: 'Objets' },
