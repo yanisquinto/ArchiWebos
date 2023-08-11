@@ -6,7 +6,7 @@ const passwordInput = document.getElementById('password');
 // Écouter l'événement de soumission du formulaire
 form.addEventListener('submit', async (e) => {
     e.preventDefault(); // Empêcher le rechargement de la page
-    
+
     const email = emailInput.value;
     const password = passwordInput.value;
 
@@ -17,7 +17,7 @@ form.addEventListener('submit', async (e) => {
     };
 
     try {
-        // Envoyer la requête POST à l'API
+        // Envoyer la requête POST à l'API pour la connexion
         const response = await fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
             headers: {
@@ -60,4 +60,5 @@ form.addEventListener('submit', async (e) => {
         alert('Une erreur est survenue lors de la connexion.');
     }
 });
+
 
