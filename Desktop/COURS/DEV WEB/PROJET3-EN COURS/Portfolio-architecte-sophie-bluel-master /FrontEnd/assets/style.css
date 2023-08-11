@@ -219,3 +219,15 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+li a {
+    color: inherit;
+    text-decoration: none; 
+}
+
+
+li a:hover {
+    color: #B1663C; 
+    text-decoration: none;
+	cursor: pointer;
+}
