@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Vérifier si un token est déjà stocké dans le local storage
+    // Je vérifie si un token est déjà stocké dans le local storage
     const storedToken = localStorage.getItem('token');
 
-    // Sélectionne l'élément HTML de la liste de navigation
+    // Sélectionne l'élément HTML de la liste
     const navigationList = document.getElementById('navigation-list');
 
     // Si un token est présent, l'utilisateur est connecté, afficher la fonction LogOut
@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Créer le nouvel élément <li> contenant le lien "Logout"
             const logoutLi = document.createElement('li');
             const logoutLink = document.createElement('a');
-            logoutLink.textContent = 'Logout';
+            logoutLink.textContent = 'logout';
             logoutLink.href = 'javascript:void(0)'; // C'est une pseudo-action JavaScript
             logoutLink.addEventListener('click', () => {
                 // Supprimer le token du local storage lors de la déconnexion
                 localStorage.removeItem('token');
                 // Rediriger vers la page de connexion (ou une autre page selon vos besoins)
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
             });
 
             logoutLi.appendChild(logoutLink);
