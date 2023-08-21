@@ -35,7 +35,7 @@ form.addEventListener('submit', async (e) => {
 
             // Après avoir reçu le token d'authentification de l'API
             const token = responseData.token;
-            const userConfiguration = responseData.configuration; // Supposons que la configuration est incluse dans la réponse
+            const userConfiguration = responseData.configuration; 
 
             // Stocker le token et la configuration dans le localStorage
             localStorage.setItem('token', token);
