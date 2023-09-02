@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.appendChild(modalContent);
         document.body.appendChild(modal);
 
-        // Rafraîchissez le contenu de la modale lorsque la modale s'ouvre
+       
         const openModalButton = document.getElementById('portfolio-edit-button');
         const closeModal = document.getElementById('close');
         const overlay = document.createElement('div');
@@ -171,12 +171,12 @@ document.addEventListener('DOMContentLoaded', function() {
         openModalButton.addEventListener('click', () => {
             modal.style.display = 'block';
             overlay.style.display = 'block'; // Afficher l'overlay
-            refreshModalContent(); // Rafraîchissez le contenu de la modale
+            refreshModalContent(); // Rafraîchir le contenu de la modale
         });
 
         closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
-            overlay.style.display = 'none'; // Masquer l'overlay
+            overlay.style.display = 'none'; 
         });
 
         overlay.addEventListener('click', (event) => {
@@ -210,8 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     modalContent.appendChild(imageElement);
 
                     const deleteButton = document.createElement('button');
-                    deleteButton.classList.add('icon-button'); // Ajoutez la classe personnalisée
-                    deleteButton.innerHTML = '<i class="fa-solid fa-trash-can" style="color: #ffffff;"></i>'; // Ajoutez l'icône FontAwesome
+                    deleteButton.classList.add('icon-button');
+                    deleteButton.innerHTML = '<i class="fa-solid fa-trash-can" style="color: #ffffff;"></i>'; 
                     deleteButton.addEventListener('click', () => {
                         const confirmDelete = confirm('Voulez-vous vraiment supprimer cette image ?');
                         if (confirmDelete) {

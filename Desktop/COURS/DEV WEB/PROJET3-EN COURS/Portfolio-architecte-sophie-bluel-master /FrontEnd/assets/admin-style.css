@@ -89,16 +89,15 @@
     text-align: center;
 }
 
-/* Style pour chaque image */
+
 .modal-content .modal-image {
-    width: 100px; /* Largeur fixe de 100px (ajustez selon vos besoins) */
-    height: 130px; /* Hauteur fixe de 100px (ajustez selon vos besoins) */
-    object-fit: cover; /* Pour maintenir les proportions de l'image */
+    width: 100px; 
+    height: 130px; 
+    object-fit: cover;
     padding: 0;
     margin-top: 100px;
 }
 
-/* Style pour les images */
 .modal-image {
     width: auto;
     height: auto;
@@ -106,15 +105,13 @@
     margin: 0;
 }
 
-/* Style pour la grille */
 .modal-content {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Crée 5 colonnes de largeur égale */
-    gap: 5px; /* Espace de 5 pixels entre les images (ajustez selon vos besoins) */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px; 
 }  
 
 
-/* Cacher les éléments de texte */
 .modal-content h2,
 .modal-content p {
     display: none;
@@ -127,9 +124,15 @@
     border-radius: 3px;
     background-color: black;
     border: none;
-    margin : 0;
+    margin: 0;
     padding: 0;
+    top: 5px; /* Ajustez la position verticale selon vos besoins */
+    right: 5px; /* Ajustez la position horizontale selon vos besoins */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 }
+
 
 .icon-button i {
     align-items: center;
