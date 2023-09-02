@@ -37,6 +37,7 @@
     font-size: 14px;
     background-color: transparent;
     top: 30px;
+    cursor: pointer;
 }
 
 .publish-changes {
@@ -80,4 +81,57 @@
     display: none;
 }
 
+.modal-title {
+    display: flex;
+    color: black;
+    font-size: 23px;
+    font-family: 'Work Sans';
+    text-align: center;
+}
 
+/* Style pour chaque image */
+.modal-content .modal-image {
+    width: 100px; /* Largeur fixe de 100px (ajustez selon vos besoins) */
+    height: 130px; /* Hauteur fixe de 100px (ajustez selon vos besoins) */
+    object-fit: cover; /* Pour maintenir les proportions de l'image */
+    padding: 0;
+    margin-top: 100px;
+}
+
+/* Style pour les images */
+.modal-image {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style pour la grille */
+.modal-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Crée 5 colonnes de largeur égale */
+    gap: 5px; /* Espace de 5 pixels entre les images (ajustez selon vos besoins) */
+}  
+
+
+/* Cacher les éléments de texte */
+.modal-content h2,
+.modal-content p {
+    display: none;
+}
+
+
+.icon-button {
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    background-color: black;
+    border: none;
+    margin : 0;
+    padding: 0;
+}
+
+.icon-button i {
+    align-items: center;
+    justify-content: center;
+}
