@@ -1,0 +1,13 @@
+.modal-title {
+    display: flex;
+    color: black;
+    font-size: 23px;
+    font-family: 'Work Sans';
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    margin-left: 230px;
+    padding: 0;
+    justify-content: center;
+    align-items: flex-start; 
+}
