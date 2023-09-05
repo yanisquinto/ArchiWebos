@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const addPhotoButton = document.getElementById("addPhotoButton");
     const uploadForm = document.getElementById("uploadForm");
     const categorySelect = document.getElementById("category");
+    const photoInput = document.getElementById("photo");
+    const photoIcon = document.getElementById("photo-icon");
+    const photoPreview = document.getElementById("photo-preview");
+    const photoLabel = document.getElementById("photoLabel");
+    const fileName = document.getElementById("fileName");
 
     // Charger les catégories depuis l'API
     fetch("http://localhost:5678/api/categories")
@@ -31,57 +35,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (response.ok) {
             console.log("Photo téléversée avec succès !");
-            refreshModalContent(); // Vous devez définir la fonction refreshModalContent pour actualiser le contenu si nécessaire
+            refreshModalContent(); 
         } else {
             console.error("Erreur lors du téléversement de la photo.");
         }
     });
 
-    addPhotoButton.addEventListener("click", () => {
-        document.getElementById("photo").click();
+    photoInput.addEventListener('change', (event) => {
+        const selectedPhoto = event.target.files[0];
+
+        if (selectedPhoto) {
+            const photoUrl = URL.createObjectURL(selectedPhoto);
+            photoPreview.src = photoUrl;
+            photoPreview.style.display = 'block';
+            photoIcon.style.display = 'none';
+            photoInput.style.display = 'none';
+            photoLabel.style.backgroundColor = '#E8F1F6';  
+        } else {
+            photoPreview.src = '';
+            photoPreview.style.display = 'none';
+            photoIcon.style.display = 'block';
+            photoInput.style.display = 'block';
+            photoLabel.style.backgroundColor = '';  
+            fileName.textContent = '';
+        }
     });
 
-    // Fonction pour téléverser l'image en requête POST
-    function uploadImage(formData) {
-        // Récupérez le token d'authentification depuis le stockage local
-        const token = localStorage.getItem('token');
+    const goBackButton = document.getElementById("goBackButton");
 
-        // Vérifiez si le token existe
-        if (!token) {
-            console.error('Token d\'authentification manquant.');
-            return;
-        }
+    const goToModalButton = document.getElementById("goToModalButton");
+    const myModal = document.getElementById("myModal");
 
-        // Définissez l'en-tête Authorization avec le token
-        const headers = new Headers();
-        headers.append('Authorization', `Bearer ${token}`);
-
-        fetch('http://localhost:5678/api/works', {
-            method: 'POST',
-            body: formData,
-            headers: headers,
-        })
-            .then(response => response.json())
-            .then(data => {
-                refreshModalContent();
-            })
-            .catch(error => {
-                console.error('Erreur lors du téléversement de l\'image :', error);
-            });
-
-            const goBackButton = document.getElementById("goBackButton");
-
-            const goToModalButton = document.getElementById("goToModalButton");
-            const myModal = document.getElementById("myModal");
-        
-            // Fonction pour ouvrir la modale
-            function openModal() {
-                myModal.classList.add("show"); // Ajoute la classe "show" pour afficher la modale
-            }
-        
-            goToModalButton.addEventListener("click", (event) => {
-                event.preventDefault();
-                openModal(); // Appelle la fonction d'ouverture de la modale lorsque le lien est cliqué
-            });
+    function openModal() {
+        myModal.classList.add("show"); 
     }
+
+    goToModalButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal(); 
+    });
 });
+

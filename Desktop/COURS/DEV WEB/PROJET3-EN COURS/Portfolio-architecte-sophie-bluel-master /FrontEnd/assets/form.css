@@ -6,8 +6,125 @@
     text-align: center;
     margin-top: 40px;
     margin-bottom: 50px;
-    margin-left: 230px;
     padding: 0;
     justify-content: center;
     align-items: flex-start; 
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#goToModalButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+}
+
+#goToModalButton i {
+    font-size: 24px; /* Ajustez la taille de l'icône selon vos besoins */
+}
+
+#goToModalButton:visited {
+    color: inherit;
+}
+
+.add-photo-container {
+    width: 420px;
+    height: 169px;
+    top: -10px;
+    position: relative;
+    left: 95px;
+    background-color: #E8F1F6;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-photo-container i {
+    font-size: 60px;
+    color: #B9C5CC;
+    margin-left: 180px;
+    margin-bottom: 70px;
+}
+
+#photo-preview {
+    width: 97px;
+    position: absolute;
+    bottom: 455px;
+    left: 42%;
+}
+
+.title-img {
+    position: absolute;
+    left: 100px;
+    color: black;
+    font-size: 14px;
+    font-family: 'Work Sans';
+    text-align: center;
+    margin-top: 40px;
+    padding: 0;
+}
+
+.category-img {
+    position: absolute;
+    left: 100px;
+    color: black;
+    font-size: 14px;
+    font-family: 'Work Sans';
+    text-align: center;
+    margin-top: 170px;
+    padding: 0;
+}
+
+#category {
+    position: fixed;
+    left: 100px;
+    top : 478px;
+    width: 420px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+#title {
+    position: fixed;
+    left: 100px;
+    top : 348px;
+    width: 420px;
+    height: 35px;
+    border: 1px solid black;
+}
+
+.submit-button {
+    font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	width: 189px;
+    height: 30px;
+	text-align: center;
+    justify-content: center;
+	border-radius: 60px ;
+    position: absolute;
+    margin-top: 360px;
+    margin-left: 220px;
+    padding: 0;
+    line-height: 30px;
+}
+
+
+.border-modal {
+    border-top: 1px solid #B3B3B3;
+    margin-top: 290px;
+    margin-left: 95px;
+    width: 415px;
+    padding: 0;
+    justify-content: center;
+    position: absolute;
 }
