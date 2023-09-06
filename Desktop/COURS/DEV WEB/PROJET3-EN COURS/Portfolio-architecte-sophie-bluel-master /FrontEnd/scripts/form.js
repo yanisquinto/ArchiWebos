@@ -19,12 +19,14 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-    uploadForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    // Gestionnaire d'événements pour le téléversement de la photo
+uploadForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-        const formData = new FormData(uploadForm);
-        const token = localStorage.getItem("token");
+    const formData = new FormData(uploadForm);
+    const token = localStorage.getItem("token");
 
+    try {
         const response = await fetch("http://localhost:5678/api/works", {
             method: "POST",
             headers: {
@@ -37,29 +39,37 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("Photo téléversée avec succès !");
             refreshModalContent(); 
         } else {
-            console.error("Erreur lors du téléversement de la photo.");
+            throw new Error(`Erreur lors du téléversement de la photo: ${response.statusText}`);
         }
-    });
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+    const customFileButton = document.querySelector(".custom-file-button");
+
 
     photoInput.addEventListener('change', (event) => {
         const selectedPhoto = event.target.files[0];
-
+    
         if (selectedPhoto) {
             const photoUrl = URL.createObjectURL(selectedPhoto);
             photoPreview.src = photoUrl;
             photoPreview.style.display = 'block';
             photoIcon.style.display = 'none';
-            photoInput.style.display = 'none';
+            customFileButton.style.display = 'none'; 
             photoLabel.style.backgroundColor = '#E8F1F6';  
         } else {
             photoPreview.src = '';
             photoPreview.style.display = 'none';
             photoIcon.style.display = 'block';
-            photoInput.style.display = 'block';
+            customFileButton.style.display = 'block';
             photoLabel.style.backgroundColor = '';  
             fileName.textContent = '';
         }
     });
+    
 
     const goBackButton = document.getElementById("goBackButton");
 

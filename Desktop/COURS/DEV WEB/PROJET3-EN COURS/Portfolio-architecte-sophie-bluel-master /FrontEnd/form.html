@@ -29,7 +29,9 @@
             <form id="uploadForm">
                 <label for="photo" class="add-photo-container" id="photoLabel">
                     <i id="photo-icon" class="fas fa-image"></i>
-                    <input type="file" id="photo" name="imageFile" accept="image/*" required>
+                    <span><input type="file" id="photo" name="imageFile" accept="image/*" style="display: none;" required>
+                    <label for="photo" class="custom-file-button">+ Ajouter photo</label></span>
+                    <p class="files-type">jpg, png : 4mo max</p>
                 </label>
                 <span id="fileName"></span>
                 <img id="photo-preview" alt="Photo Preview" style="display:none; max-width: 100%;">
