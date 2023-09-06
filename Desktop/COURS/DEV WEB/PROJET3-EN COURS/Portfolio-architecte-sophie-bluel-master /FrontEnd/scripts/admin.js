@@ -169,35 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         });
 
-        // Fonction pour téléverser l'image en requête POST
-        function uploadImage(formData) {
-            // Récupérez le token d'authentification depuis le stockage local
-            const token = localStorage.getItem('token');
-
-            // Vérifiez si le token existe
-            if (!token) {
-                console.error('Token d\'authentification manquant.');
-                return;
-            }
-
-            // Définissez l'en-tête Authorization avec le token
-            const headers = new Headers();
-            headers.append('Authorization', `Bearer ${token}`);
-
-            fetch('http://localhost:5678/api/works', {
-                method: 'POST',
-                body: formData,
-                headers: headers,
-            })
-                .then(response => response.json())
-                .then(data => {
-                    refreshModalContent();
-                })
-                .catch(error => {
-                    console.error('Erreur lors du téléversement de l\'image :', error);
-                });
-        }
-
         modalContent.appendChild(addButton);
 
         modal.appendChild(modalContent);
