@@ -94,10 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    function closeModal() {
-        const myModal = document.getElementById("myModal");
-        myModal.style.display = "none";
-    }
 
     uploadForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -110,6 +106,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         uploadImage(formData);
+    });
+
+
+    const closeButton = document.getElementById("close");
+
+    closeButton.addEventListener("click", () => {
+        window.parent.location.href = 'index.html';
+    });
+
+    const goToModalButton = document.getElementById("goToModalButton");
+
+    goToModalButton.addEventListener("click", () => {
+        window.location.href = 'index.html';
+
+        localStorage.setItem('formSubmitted', 'true');
     });
 
     loadCategories();

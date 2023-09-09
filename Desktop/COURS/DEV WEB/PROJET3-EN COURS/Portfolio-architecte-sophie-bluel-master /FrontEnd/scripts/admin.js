@@ -142,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.style.display = 'none';
             overlay.style.display = 'none';
             restoreInitialModalPage();
+            window.location.reload();
         });
 
         overlay.addEventListener('click', (event) => {
@@ -149,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 modal.style.display = 'none';
                 overlay.style.display = 'none';
                 restoreInitialModalPage();
+                window.location.reload();
             }
         });
 
@@ -157,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 modal.style.display = 'none';
                 overlay.style.display = 'none';
                 restoreInitialModalPage();
+                window.location.reload();
             }
         });
 
