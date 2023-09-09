@@ -1,76 +1,78 @@
 document.addEventListener('DOMContentLoaded', function () {
     const uploadForm = document.getElementById("uploadForm");
     const categorySelect = document.getElementById("category");
-    const photoInput = document.getElementById("photo");
+    const photoInput = document.getElementById("image");
     const photoIcon = document.getElementById("photo-icon");
     const photoPreview = document.getElementById("photo-preview");
     const photoLabel = document.getElementById("photoLabel");
     const fileName = document.getElementById("fileName");
+    const customFileButton = document.querySelector(".custom-file-button");
+    const myModal = document.getElementById("myModal");
 
-    // Charger les catégories depuis l'API
-    fetch("http://localhost:5678/api/categories")
-        .then(response => response.json())
-        .then(categories => {
-            categories.forEach(category => {
-                const option = document.createElement("option");
-                option.value = category.id;
-                option.textContent = category.name;
-                categorySelect.appendChild(option);
-            });
-        });
-
-    // Fonction pour téléverser l'image en requête POST
     async function uploadImage(formData) {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            console.error('Token d\'authentification manquant.');
+            return;
+        }
+
+        const headers = new Headers();
+        headers.append('Authorization', `Bearer ${token}`);
+
         try {
-            // Récupérez le token d'authentification depuis le stockage local
-            const token = localStorage.getItem('token');
-
-            // Vérifiez si le token existe
-            if (!token) {
-                console.error('Token d\'authentification manquant.');
-                return;
-            }
-
-            // Définissez l'en-tête Authorization avec le token
-            const headers = new Headers();
-            headers.append('Authorization', `Bearer ${token}`);
-
             const response = await fetch('http://localhost:5678/api/works', {
                 method: 'POST',
                 body: formData,
                 headers: headers,
             });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || response.statusText);
+            const data = await response.json();
+            console.log('Photo téléversée avec succès !');
+
+            const iframe = document.querySelector('iframe');
+            if (iframe) {
+                iframe.style.display = 'none'; // Vous pouvez également utiliser iframe.remove() pour le supprimer complètement
             }
 
-            const data = await response.json();
-            refreshModalContent();
-            console.log('Photo téléversée avec succès !');
-            return data;
+            // Marquer la soumission du formulaire
+            localStorage.setItem('formSubmitted', 'true');
+
+            // Rediriger l'utilisateur vers index.html après la soumission réussie
+            window.location.href = 'index.html';
+
         } catch (error) {
-            console.error('Erreur lors du téléversement de l\'image :', error);
-            throw error;
+            console.error(error.message);
         }
     }
 
-    // Gestionnaire d'événements pour le téléversement de la photo
-    uploadForm.addEventListener("submit", async (event) => {
-        
-        const formData = new FormData(uploadForm);
-
+    async function loadCategories() {
         try {
-            await uploadImage(formData);
-            refreshModalContent();
-            console.log('Photo téléversée avec succès !');
+            const response = await fetch("http://localhost:5678/api/categories");
+            if (!response.ok) {
+                throw new Error('Erreur lors du chargement des catégories');
+            }
+            const categories = await response.json();
+            categories.forEach(category => {
+                const option = document.createElement("option");
+                option.value = category.id;
+                option.textContent = category.name;
+                categorySelect.appendChild(option);
+            });
         } catch (error) {
-            console.error('Erreur lors du téléversement de l\'image :', error);
+            console.error(error.message);
         }
-    });
+    }
 
-    const customFileButton = document.querySelector(".custom-file-button");
+    function resetModal() {
+        myModal.classList.remove("show");
+        photoPreview.src = '';
+        photoPreview.style.display = 'none';
+        photoIcon.style.display = 'block';
+        customFileButton.style.display = 'block';
+        photoLabel.style.backgroundColor = '';
+        fileName.textContent = '';
+    }
 
     photoInput.addEventListener('change', (event) => {
         const selectedPhoto = event.target.files[0];
@@ -92,16 +94,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    const goBackButton = document.getElementById("goBackButton");
-    const goToModalButton = document.getElementById("goToModalButton");
-    const myModal = document.getElementById("myModal");
-
-    function openModal() {
-        myModal.classList.add("show");
+    function closeModal() {
+        const myModal = document.getElementById("myModal");
+        myModal.style.display = "none";
     }
 
-    goToModalButton.addEventListener("click", (event) => {
+    uploadForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        openModal();
+
+        const formData = new FormData(uploadForm);
+        const selectedPhoto = photoInput.files[0];
+        if (!selectedPhoto) {
+            alert('Veuillez sélectionner une photo avant de soumettre le formulaire.');
+            return;
+        }
+
+        uploadImage(formData);
     });
+
+    loadCategories();
 });
+
+
